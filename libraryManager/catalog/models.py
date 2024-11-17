@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Count
 from django.urls import reverse
 from django.db.models import UniqueConstraint
 from django.db.models.functions import Lower
@@ -13,6 +14,7 @@ class Genre(models.Model):
         return self.name
     def get_absolute_url(self):
         return reverse("genre-detial", args=[str[self.id]]);
+    
     
     class Meta:
         constraints=[
@@ -55,7 +57,6 @@ class Book(models.Model):
         return ', '.join(genre.name for genre in self.genre.all()[:3])
 
     display_genre.short_description = 'Genre'
-
     
 #create book instance model 
 class BookInstance(models.Model):

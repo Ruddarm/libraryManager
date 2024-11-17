@@ -6,7 +6,7 @@ from  . import views;
 
 
 urlpatterns = [
-    path('hello/', views.getHello),
+    path('', views.index,name='index'),
     # path('catalog/',include('catalog.urls')),
     # path('', RedirectView.as_view(url='/catalog/', permanent=True)),
 ]

@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %} {%block title%}<title>
+  Local Library Home Page</title
+>{%endblock title%} {% block content%}
+<h1>Local Library</h1>
+<p>Welcome to local library, a website developed by <em>Ruddarm Mourya</em></p>
+<h2>Library Records</h2>
+<ul>
+  <li><strong>Books : </strong>{{num_book}}</li>
+  <li><b>Copies : </b>{{num_instances}}</li>
+  <li><b>Copies Available:</b>{{num_instances_available}}</li>
+  <li><b>Authors : </b> {{num_of_author}}</li>
+</ul>
+<h3>Book by Genre</h3>
+<ul>
+  {%for Genname in genre_list %}
+  <li><b>{{Genname}}</b> {{Genname.book_count}}</li>
+  {% endfor %}
+</ul>
+{%endblock%}
