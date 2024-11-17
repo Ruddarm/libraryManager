@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import request,response;
 from .models import Book,Author,BookInstance,Genre
 from django.db.models import Count
+from django.shortcuts import get_object_or_404
+
 from django.views import generic
 # Create your views here.
 def index(request):
@@ -26,5 +28,16 @@ class BookListView(generic.ListView):
     context_object_name='book_list'
     template_name='book_list.html'
 
-class BookDetailView(generic.ListView):
-    pass
+class BookDetailView(generic.DetailView):
+    model = Book
+    template_name = 'book_detail.html'
+    paginate_by = 10
+    
+class AuthorView(generic.ListView):
+    model=Author
+    context_object_name='author_list'
+    template_name='authors.html'
+class AuthorDetailView(generic.DeleteView):
+    model=Author
+    template_name='author_info.html'
+    
