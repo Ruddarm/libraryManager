@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import request,response;
 from .models import Book,Author,BookInstance,Genre
 from django.db.models import Count
+from django.views import generic
 # Create your views here.
 def index(request):
     num_of_book = Book.objects.all().count();
@@ -20,4 +21,10 @@ def index(request):
         'genre_list':genres_with_book_count
     }
     return render(request,'index.html',context=context);
-    
+class BookListView(generic.ListView):
+    model=Book
+    context_object_name='book_list'
+    template_name='book_list.html'
+
+class BookDetailView(generic.ListView):
+    pass
